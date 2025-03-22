@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanker - Instant Dev Environments</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo.svg" alt="Tanker Logo">
+        <h1>Tanker</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="active" data-view="environments">
+            <i class="fas fa-cubes"></i>
+            <span>Environments</span>
+          </li>
+          <li data-view="templates">
+            <i class="fas fa-boxes"></i>
+            <span>Templates</span>
+          </li>
+          <li data-view="settings">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </li>
+        </ul>
+      </nav>
+      <div class="docker-status">
+        <div class="status-indicator" id="docker-indicator"></div>
+        <span id="docker-status-text">Checking Docker...</span>
+      </div>
+    </aside>
+
+    <main class="content">
+      <!-- Environments View -->
+      <section id="environments-view" class="view active">
+        <header>
+          <h2>My Environments</h2>
+          <button id="create-environment-btn" class="btn primary">
+            <i class="fas fa-plus"></i> New Environment
+          </button>
+        </header>
+        
+        <div class="environments-grid" id="environments-list">
+          <!-- Environments will be populated here -->
+          <div class="empty-state">
+            <i class="fas fa-ship"></i>
+            <h3>No environments yet</h3>
+            <p>Create your first development environment to get started.</p>
+            <button class="btn primary" id="empty-create-btn">Create Environment</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Templates View -->
+      <section id="templates-view" class="view">
+        <header>
+          <h2>Templates</h2>
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search templates...">
+          </div>
+        </header>
+        
+        <div class="templates-grid" id="templates-list">
+          <!-- Templates will be populated here -->
+        </div>
+      </section>
+
+      <!-- Settings View -->
+      <section id="settings-view" class="view">
+        <header>
+          <h2>Settings</h2>
+        </header>
+        
+        <div class="settings-container">
+          <div class="settings-group">
+            <h3>Docker Configuration</h3>
+            <div class="setting-item">
+              <span>Docker Host</span>
+              <input type="text" id="docker-host" value="localhost" disabled>
+            </div>
+            <div class="setting-item">
+              <span>Default Project Location</span>
+              <div class="path-selector">
+                <input type="text" id="default-project-path" readonly>
+                <button class="btn secondary" id="select-default-path-btn">Browse</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="settings-group">
+            <h3>Application</h3>
+            <div class="setting-item">
+              <span>Theme</span>
+              <select id="theme-selector">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="system">Use System Theme</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <span>Start on system boot</span>
+              <label class="toggle">
+                <input type="checkbox" id="start-on-boot">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="settings-group">
+            <h3>About</h3>
+            <div class="about-info">
+              <p>Tanker - Instant Dev Environments</p>
+              <p>Version 1.0.0</p>
+              <p>&copy; 2025 Tanker Team</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Create Environment Modal -->
+  <div class="modal" id="create-environment-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Create New Environment</h3>
+        <button class="close-btn" id="close-create-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="create-environment-form">
+          <div class="form-group">
+            <label for="environment-name">Environment Name</label>
+            <input type="text" id="environment-name" required placeholder="My Awesome Project">
+          </div>
+          
+          <div class="form-group">
+            <label>Template</label>
+            <div class="template-selector" id="template-selector">
+              <!-- Templates will be populated here -->
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="project-path">Project Location</label>
+            <div class="path-selector">
+              <input type="text" id="project-path" readonly required>
+              <button type="button" class="btn secondary" id="select-path-btn">Browse</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn secondary" id="cancel-create-btn">Cancel</button>
+        <button class="btn primary" id="submit-create-btn">Create Environment</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

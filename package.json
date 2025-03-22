@@ -1,0 +1,37 @@
+{
+    "name": "tanker-dev-environments",
+    "version": "1.0.0",
+    "description": "Instant local development environments for developers",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "build": "electron-builder",
+      "test": "jest"
+    },
+    "author": "Tanker Team",
+    "license": "MIT",
+    "devDependencies": {
+      "electron": "^24.0.0",
+      "electron-builder": "^24.0.0",
+      "jest": "^29.5.0"
+    },
+    "dependencies": {
+      "dockerode": "^3.3.5",
+      "electron-store": "^8.1.0",
+      "uuid": "^9.0.0",
+      "yaml": "^2.2.2"
+    },
+    "build": {
+      "appId": "com.tanker.app",
+      "productName": "Tanker",
+      "mac": {
+        "category": "public.app-category.developer-tools"
+      },
+      "win": {
+        "target": "nsis"
+      },
+      "linux": {
+        "target": "AppImage"
+      }
+    }
+  }
